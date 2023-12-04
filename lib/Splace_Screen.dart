@@ -11,25 +11,33 @@ class Splace_Screen extends StatefulWidget{
 
 }
 class Splace_ScreenState extends State<Splace_Screen>with TickerProviderStateMixin{
-  late AnimationController _controller2;
-  late Animation<double> animation;
+   late AnimationController _controller;
+   late Animation _animation;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    _controller2 = AnimationController(
+    _controller = AnimationController(
         duration: const Duration(seconds: 3),
-        vsync: this,
-        value: 0,
-        lowerBound: 0,
-        upperBound: 1
-    );
-    animation = CurvedAnimation(parent: _controller2, curve: Curves.fastOutSlowIn);
+        vsync: this,);
+    _animation =Tween<double>(end: 50,begin: 0).animate(_controller);
+    _controller.addStatusListener((status){
+      setState(() {
 
-    _controller2.forward();
-    Future.delayed(Duration(seconds: 5),() {
-      Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomePage(),));
+      });
+    });
+
+    _controller.forward();
+    Future.delayed(Duration(seconds: 4),() {
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage(),));
+
     },);
+  }
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _controller.dispose();
+    super.dispose();
   }
   @override
   Widget build(BuildContext context) {
@@ -37,12 +45,13 @@ class Splace_ScreenState extends State<Splace_Screen>with TickerProviderStateMix
     return Scaffold(
       body: Stack(
         children: [
-          Image(image: NetworkImage('https://img.freepik.com/free-photo/ultra-detailed-nebula-abstract-wallpaper-9_1562-754.jpg'),height: double.infinity,width: double.infinity,fit: BoxFit.cover,),
-          Center(
-            child: FadeTransition(
-              opacity: animation,
-                child: Text(" Discover\n Your Planet",style:TextStyle(fontFamily: "GreatVibes",color: Colors.white,fontSize: 40,fontWeight: FontWeight.bold,),textAlign: TextAlign.center,)),
-          )
+          Image(image: AssetImage("assets/sp2.jpg"),height: double.infinity,width: double.infinity,fit: BoxFit.cover,),
+      Center(
+        child: Text(" Discover\n Your Planet",style:TextStyle(
+          fontFamily: "GreatVibes",color: Colors.white,fontSize: _animation.value,fontWeight: FontWeight.bold,)
+          ,textAlign: TextAlign.center,),
+              ),
+
         ],
       ),
     );

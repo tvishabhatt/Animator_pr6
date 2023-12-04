@@ -1,3 +1,4 @@
+import 'package:animator_pr6/Bookmark.dart';
 import 'package:animator_pr6/HomePage.dart';
 import 'package:animator_pr6/PlanetsModal.dart';
 import 'package:animator_pr6/Splace_Screen.dart';
@@ -15,6 +16,7 @@ void main() async{
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (context) => ThemeProvider(themeModal: ThemeModal(isDark: isDark)),),
     ChangeNotifierProvider(create: (context) => Planets_Provider(),),
+    ChangeNotifierProvider(create: (context) => Bookmark(),),
 
   ],
   child: const MyApp(),));

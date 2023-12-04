@@ -1,5 +1,6 @@
 
 
+import 'package:animator_pr6/Bookmark.dart';
 import 'package:animator_pr6/PlanetsModal.dart';
 import 'package:animator_pr6/ThemeModal.dart';
 import 'package:flutter/material.dart';
@@ -41,9 +42,16 @@ class DetailPageState extends State<DetailPage> with TickerProviderStateMixin{
               automaticallyImplyLeading: true,
               backgroundColor: themeModal.themeModal.isDark?Color(0xff00203F):
               Color(0xff13af67),
-              title: Text("Planets",style: TextStyle(color: themeModal.themeModal.isDark?Colors.white:Colors.white,fontSize: 20 ,fontWeight: FontWeight.w500),),
+              title: Text("${PlanetList[selectedindex].name}",style: TextStyle(color: themeModal.themeModal.isDark?Colors.white:Colors.white,fontSize: 20 ,fontWeight: FontWeight.w500),),
               centerTitle: true,
               actions: [
+                Consumer(
+                  builder: (context,Bookmark bookmarkporvider,child) {
+                    return IconButton(onPressed: () {
+                   bookmarkporvider.saveStringList("${PlanetList[selectedindex].name}");
+                    }, icon: Icon(bookmarkporvider.stringList.contains(PlanetList[selectedindex].name)?Icons.favorite:Icons.favorite_border,color: Colors.red,size: 20,));
+                  }
+                ),
                 IconButton(onPressed: () {
                   Provider.of<ThemeProvider>(context, listen: false).ChangeTheme();
                 },
