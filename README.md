@@ -12,4 +12,7 @@ Here are some screenshots of the app:
 🎥 Demo
 
 Watch the app in action:
-<div align="center"> <video src="https://github.com/tvishabhatt/Animator_pr6/assets/122964289/a6b74fb9-0c90-4626-9c28-7e12d0f3e7ab" width="300" controls></video> <p>Animator Demo Video</p> </div>
+
+<div align="center"> <img src="https://github.com/tvishabhatt/Animator_pr6/assets/122964289/a6b74fb9-0c90-4626-9c28-7e12d0f3e7ab" alt="Firebase Keeper Demo" width="300"/> <p>App Demo</p> </div>
+
+
